@@ -61,3 +61,11 @@ h1 {
 .ui-panelgrid td {
 	height: 34px;
 }
+
+.ajax-status {
+	position: fixed;
+	top: 55px;
+	right: 10px;
+	height: 35px;
+	width: 35px;	
+}
