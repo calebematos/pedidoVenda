@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<p:panelGrid style="width:100%" columns="4" columnClasses="rotulo, campo, rotulo, campo">
+		<p:outputLabel value="Data de emtrega" for="dataEntrega"/>
+		<p:calendar id="dataEntrega" size="10" pattern="dd/MM/yyyy"/>
+		
+		<p:spacer/>
+		<p:spacer/>
+		
+		<p:outputLabel value="Logradouro" for="logradouro"/>
+		<p:inputText id="logradouro" size="50"/>
+		
+		<p:outputLabel value="Número" for="numero"/>
+		<p:inputText id="numero" size="5"/>
+		
+		<p:outputLabel value="Complemento" for="complemento"/>
+		<p:inputText id="complemento" size="50"/>
+		
+		<p:outputLabel value="Cidade" for="cidade"/>
+		<p:inputText id="cidade" size="20"/>
+		
+		<p:outputLabel value="Estado" for="estado"/>
+		<p:inputText id="estado" size="20"/>
+		
+		<p:outputLabel value="CEP" for="cep"/>
+		<p:inputText id="cep" size="10"/>
+			
+	</p:panelGrid>
+	
+</ui:composition>

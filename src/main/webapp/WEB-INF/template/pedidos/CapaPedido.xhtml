@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<p:panelGrid style="margin-top: 20px; width: 100%" columns="4" columnClasses="rotulo, campo, rotulo, campo">
+		<p:outputLabel value="Número"/>
+		<h:outputText value="12345"/>
+		
+		<p:outputLabel value="Data de criação"/>
+		<h:outputText value="12/10/2018"/>
+		
+		<p:outputLabel value="Status"/>
+		<h:outputText value="Orçamento"/>
+		
+		<p:outputLabel value="Vendedor"/>
+		<p:selectOneMenu>
+			<f:selectItem itemLabel="Selecione"/>
+			<f:selectItem itemLabel="João da Silva Sauro"/>
+		</p:selectOneMenu>
+		
+		<p:outputLabel value="Cliente"/>
+		<p:autoComplete size="40" minQueryLength="3" dropdown="true"/>
+	
+		<h:outputText value="Forma de pagamento"/>
+		<p:selectOneMenu>
+			<f:selectItem itemLabel="Selecione"/>
+			<f:selectItem itemLabel="Cartão de Crédito"/>
+			<f:selectItem itemLabel="Débito"/>
+		</p:selectOneMenu>
+		
+		<p:outputLabel value="Valor do frete"/>
+		<p:inputText value="" size="10" maxlength="10"/>
+		
+		<p:outputLabel value="Subtotal" style="font-weight: bold;"/>
+		<h:outputText id="subtotal" value="R$ 0,0" size="10" style="font-weight: bold;"/>
+		
+		<p:outputLabel value="Valor do desconto"/>
+		<p:inputText value="" size="10" maxlength="10"/>
+		
+		<p:outputLabel value="Total" style="font-weight: bold; font-size:1.1em"/>
+		<h:outputText id="totalPedido" value="R$ 0,0" size="10" style="font-weight: bold; font-size:1.1em"/>
+		
+	</p:panelGrid>
+	
+</ui:composition>
