@@ -1,16 +1,26 @@
 package br.com.calebematos.pedidovenda.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
-@ManagedBean
-public class CadastroPedidoBean {
+@Named
+@ViewScoped
+public class CadastroPedidoBean implements Serializable{
 
-	private List<Integer> itens;
+	private static final long serialVersionUID = 1L;
 	
+	private List<Integer> itens;
+
 	public CadastroPedidoBean() {
+	}
+
+	@PostConstruct
+	public void init() {
 		itens = new ArrayList<>();
 		itens.add(1);
 	}

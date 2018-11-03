@@ -15,15 +15,25 @@
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
-			<version>2.1.21</version>
+			<version>2.2.9</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>6.2</version>
 		</dependency>
+
+
+		<!-- Weld (implementação do CDI) -->
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.2.9.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -39,6 +49,6 @@
 			</plugin>
 		</plugins>
 	</build>
-		
+
 
 </project>
