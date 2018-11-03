@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.com.calebematos.pedidovenda.service.NegocioException;
+
 @Named
 @ViewScoped
 public class CadastroPedidoBean implements Serializable{
@@ -23,6 +25,10 @@ public class CadastroPedidoBean implements Serializable{
 	public void init() {
 		itens = new ArrayList<>();
 		itens.add(1);
+	}
+	
+	public void salvar() {
+		throw new NegocioException("Não pode ser salvo, pois ainda não foi implementado");
 	}
 
 	public List<Integer> getItens() {
