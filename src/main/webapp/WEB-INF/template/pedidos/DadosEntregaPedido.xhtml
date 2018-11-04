@@ -6,28 +6,36 @@
 	
 	<p:panelGrid style="width:100%" columns="4" columnClasses="rotulo, campo, rotulo, campo">
 		<p:outputLabel value="Data de emtrega" for="dataEntrega"/>
-		<p:calendar id="dataEntrega" size="10" pattern="dd/MM/yyyy"/>
+		<p:calendar id="dataEntrega" size="10" pattern="dd/MM/yyyy"
+			value="#{cadastroPedidoBean.pedido.dataEntrega}">
+			<f:convertDateTime pattern="dd/MM/yyy"/>
+		</p:calendar>
 		
 		<p:spacer/>
 		<p:spacer/>
 		
 		<p:outputLabel value="Logradouro" for="logradouro"/>
-		<p:inputText id="logradouro" size="50"/>
+		<p:inputText id="logradouro" size="50" value="#{cadastroPedidoBean.pedido.enderecoEntrega.logradouro}"/>
 		
 		<p:outputLabel value="Número" for="numero"/>
-		<p:inputText id="numero" size="5"/>
+		<p:inputText id="numero" size="5"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.numero}"/>
 		
 		<p:outputLabel value="Complemento" for="complemento"/>
-		<p:inputText id="complemento" size="50"/>
+		<p:inputText id="complemento" size="50"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.complemento}"/>
 		
 		<p:outputLabel value="Cidade" for="cidade"/>
-		<p:inputText id="cidade" size="20"/>
+		<p:inputText id="cidade" size="20"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.cidade}"/>
 		
 		<p:outputLabel value="Estado" for="estado"/>
-		<p:inputText id="estado" size="20"/>
+		<p:inputText id="estado" size="20"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.uf}"/>
 		
 		<p:outputLabel value="CEP" for="cep"/>
-		<p:inputText id="cep" size="10"/>
+		<p:inputText id="cep" size="10"
+			value="#{cadastroPedidoBean.pedido.enderecoEntrega.cep}"/>
 			
 	</p:panelGrid>
 	

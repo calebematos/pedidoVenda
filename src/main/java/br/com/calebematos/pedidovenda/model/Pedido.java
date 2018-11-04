@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pedido")
@@ -31,38 +32,47 @@ public class Pedido implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
+	@NotNull
 	@Column(name = "data_criacao", nullable = false)
 	private LocalDateTime dataCriacao;
 
 	@Column(columnDefinition = "text")
 	private String observacao;
 
+	@NotNull
 	@Column(name = "data_entrega", nullable = false)
 	private LocalDate dataEntrega;
 
+	@NotNull
 	@Column(name = "valor_frete", nullable = false, precision = 10, scale = 2)
 	private BigDecimal valorFrete;
 
+	@NotNull
 	@Column(name = "valor_desconto", nullable = false, precision = 10, scale = 2)
 	private BigDecimal valorDesconto;
 
+	@NotNull
 	@Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
 	private BigDecimal valorTotal;
 
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "forma_pagamento", nullable = false, length = 20)
 	private FormaPagamento formaPagamento;
 
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private StatusPedido statusPedido;
 
 	@Embedded
 	private EnderecoEntrega enderecoEntrega;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "codigo_vendedor", nullable = false)
 	private Usuario vendedor;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "codigo_cliente", nullable = false)
 	private Cliente cliente;

@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.com.calebematos.pedidovenda.model.EnderecoEntrega;
+import br.com.calebematos.pedidovenda.model.Pedido;
 import br.com.calebematos.pedidovenda.service.NegocioException;
 
 @Named
@@ -16,6 +18,7 @@ public class CadastroPedidoBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	private Pedido pedido;
 	private List<Integer> itens;
 
 	public CadastroPedidoBean() {
@@ -23,6 +26,8 @@ public class CadastroPedidoBean implements Serializable{
 
 	@PostConstruct
 	public void init() {
+		pedido = new Pedido();
+		pedido.setEnderecoEntrega(new EnderecoEntrega());
 		itens = new ArrayList<>();
 		itens.add(1);
 	}
@@ -35,7 +40,8 @@ public class CadastroPedidoBean implements Serializable{
 		return itens;
 	}
 
-	public void setItens(List<Integer> itens) {
-		this.itens = itens;
+	public Pedido getPedido() {
+		return pedido;
 	}
+
 }

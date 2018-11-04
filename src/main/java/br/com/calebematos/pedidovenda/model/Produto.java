@@ -13,7 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import br.com.calebematos.pedidovenda.validation.SKU;
 
 @Entity
 @Table(name = "produto")
@@ -25,12 +29,15 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
+	@NotBlank @Size(max=80)
 	@Column(nullable = false, length = 80)
 	private String nome;
 
+	@NotBlank @SKU
 	@Column(nullable = false, length = 20, unique = true)
 	private String sku;
 
+	@NotNull
 	@Column(name = "valor_unitario", nullable = false, precision = 10, scale = 2)
 	private BigDecimal valorUnitario;
 
@@ -38,6 +45,7 @@ public class Produto implements Serializable {
 	@Column(name = "quantidade_estoque", nullable = false, length = 5)
 	private Integer quantidadeEstoque;
 
+	@NotNull
 	@ManyToOne()
 	@JoinColumn(name = "codigo_categoria", nullable = false)
 	private Categoria categoria;

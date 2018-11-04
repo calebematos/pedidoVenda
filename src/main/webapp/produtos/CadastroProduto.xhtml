@@ -28,10 +28,12 @@
 			<p:panelGrid columns="2" style="width:100%; margin-top:20px"
 				columnClasses="rotulo, campo">
 				<p:outputLabel value="SKU" for="sku" />
-				<p:inputText id="sku" size="20" maxlength="20" />
+				<p:inputText id="sku" size="20" maxlength="20" 
+					value="#{cadastroProdutoBean.produto.sku}"/>
 	
 				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" size="60" maxlength="80" />
+				<p:inputText id="nome" size="60" maxlength="80" 
+					value="#{cadastroProdutoBean.produto.nome}"/>
 	
 				<p:outputLabel value="Categoria" for="categoria" />
 				<p:selectOneMenu id="categoria">
@@ -39,15 +41,19 @@
 				</p:selectOneMenu>
 	
 				<p:outputLabel value="Subcategoria" for="subCategoria" />
-				<p:selectOneMenu id="subCategoria">
-					<f:selectItem itemLabel="Selecione a subcategoria" />
+				<p:selectOneMenu id="subCategoria" value="#{cadastroProdutoBean.produto.categoria}">
+					<f:selectItem itemLabel="Selecione a subcategoria"/>
 				</p:selectOneMenu>
 	
 				<p:outputLabel value="Valor Unitário" for="valorUnitario" />
-				<p:inputNumber id="valorUnitario" size="10" maxlength="10" />
+				<p:inputNumber id="valorUnitario" size="10" maxlength="10" 
+					value="#{cadastroProdutoBean.produto.valorUnitario}">
+					<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>	
+				</p:inputNumber>
 				
 				<p:outputLabel value="Estoque" for="estoque" />
-				<p:inputText id="estoque" size="10" maxlength="4" value="#{cadastroProdutoBean.produto.quantidadeEstoque}"/>
+				<p:inputText id="estoque" size="10" maxlength="4" 
+					value="#{cadastroProdutoBean.produto.quantidadeEstoque}"/>
 	
 			</p:panelGrid>
 		</h:form>
