@@ -49,7 +49,7 @@ public class CadastrosTest {
 
 	@After
 	public void tearDawn() {
-		trx.commit();
+		trx.rollback();
 		entityManager.close();
 	}
 
