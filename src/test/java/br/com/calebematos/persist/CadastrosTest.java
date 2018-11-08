@@ -95,6 +95,17 @@ public class CadastrosTest {
 		item.setPedido(pedido);
 
 		pedido.getItens().add(item);
+		
+		entityManager.persist(pedido);
+	}
+	
+
+	@Test
+	public void deveSalvarCategoria() {
+		Categoria categoria = new Categoria();
+		categoria.setDescricao("Informática");
+		
+		entityManager.persist(categoria);
 	}
 
 	private Cliente obterCliente() {
@@ -153,6 +164,5 @@ public class CadastrosTest {
 		produto.setValorUnitario(new BigDecimal(2.21));
 		
 		return produto;
-
 	}
 }
