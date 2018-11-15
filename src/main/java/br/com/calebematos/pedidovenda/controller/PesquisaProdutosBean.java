@@ -1,25 +1,42 @@
 package br.com.calebematos.pedidovenda.controller;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named
-public class PesquisaProdutosBean {
+import br.com.calebematos.pedidovenda.model.Produto;
+import br.com.calebematos.pedidovenda.repository.ProdutoRepository;
+import br.com.calebematos.pedidovenda.repository.filter.ProdutoFilter;
 
-	
-	private List<Integer> produtosFiltrados;
-	
+@Named
+@ViewScoped
+public class PesquisaProdutosBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private ProdutoRepository produtoRepository;
+
+	private ProdutoFilter filtro;
+	private List<Produto> produtosFiltrados;
+
 	public PesquisaProdutosBean() {
-		produtosFiltrados = new ArrayList<>();
-		for(int i = 0; i < 50 ; i++) {
-			produtosFiltrados.add(i);
-		}
+		filtro = new ProdutoFilter();
 	}
-	
-	public List<Integer> getProdutosFiltrados() {
+
+	public void pesquisar() {
+		produtosFiltrados = produtoRepository.filtrar(filtro);
+	}
+
+	public List<Produto> getProdutosFiltrados() {
 		return produtosFiltrados;
 	}
-	
+
+	public ProdutoFilter getFiltro() {
+		return filtro;
+	}
+
 }

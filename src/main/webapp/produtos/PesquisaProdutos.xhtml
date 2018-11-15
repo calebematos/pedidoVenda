@@ -8,12 +8,16 @@
 	<ui:define name="titulo">pesquisa de Produtos</ui:define>
 
 	<ui:define name="corpo">
-		<h1>Pesquisa de produto</h1>
-
 		<h:form>
+			<h1>Pesquisa de produto</h1>
+			
+			<p:messages closable="true">
+				<p:autoUpdate />
+			</p:messages>
+
 			<p:toolbar style="margin-top:20px">
 				<p:toolbarGroup>
-					<p:commandButton value="Pesquisar" />
+					<p:commandButton value="Pesquisar" action="#{pesquisaProdutosBean.pesquisar}" update="@form"/>
 				</p:toolbarGroup>
 	
 				<p:toolbarGroup align="right">
@@ -24,10 +28,10 @@
 			<p:panelGrid columns="2" style="width:100%; margin-top:20px"
 				columnClasses="rotulo, campo">
 				<p:outputLabel value="SKU" for="sku" />
-				<p:inputText id="sku" size="20"/>
+				<p:inputText id="sku" size="20" value="#{pesquisaProdutosBean.filtro.sku}"/>
 	
 				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" size="60"/>
+				<p:inputText id="nome" size="60" value="#{pesquisaProdutosBean.filtro.nome}"/>
 			</p:panelGrid>
 			
 			<p:dataTable id="produtosTable" value="#{pesquisaProdutosBean.produtosFiltrados}" var="produto" style="margin-top:20px"
@@ -35,19 +39,21 @@
 				rows="10" emptyMessage="Nenhum produto encontrado">
 				
 				<p:column headerText="SKU" style="text-align:center; width:100px">
-					<h:outputText value="123"/>
+					<h:outputText value="#{produto.sku}"/>
 				</p:column>
 				<p:column headerText="Nome">
-					<h:outputText value="Bala"/>
+					<h:outputText value="#{produto.nome}"/>
 				</p:column>
 				<p:column headerText="Categoria" style="width:250px">
-					<h:outputText value="Doces - Chicletes"/>
+					<h:outputText value="#{produto.categoria.categoriaPai.descricao} - #{produto.categoria.descricao}"/>
 				</p:column>
 				<p:column headerText="Valor unitário" style="text-align:right; width:120px">
-					<h:outputText value="1,20"/>
+					<h:outputText value="#{produto.valorUnitario}">
+						<f:convertNumber type="currency"/>
+					</h:outputText>
 				</p:column>
 				<p:column headerText="Estoque" style="text-align:center; width:100px">
-					<h:outputText value="90"/>
+					<h:outputText value="#{produto.quantidadeEstoque}"/>
 				</p:column>
 				<p:column style="text-align:center; width:100px">
 					<p:button icon="ui-icon-pencil" title="Editar"/>
