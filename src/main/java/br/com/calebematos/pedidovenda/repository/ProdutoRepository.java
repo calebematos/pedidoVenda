@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -27,13 +26,7 @@ public class ProdutoRepository implements Serializable {
 	private EntityManager manager;
 
 	public Produto guardar(Produto produto) {
-		EntityTransaction trx = manager.getTransaction();
-		trx.begin();
-
-		manager.merge(produto);
-
-		trx.commit();
-		return produto;
+		return manager.merge(produto);
 	}
 
 	public Produto obterPorSku(String sku) {
@@ -71,6 +64,10 @@ public class ProdutoRepository implements Serializable {
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
+	}
+
+	public Produto obterProdutoPorId(Long id) {
+		return manager.find(Produto.class, id);
 	}
 
 }

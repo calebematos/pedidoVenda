@@ -5,16 +5,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Novo Produto</ui:define>
+	<ui:define name="titulo">#{cadastroProdutoBean.editando ? 'Edição de' : 'Novo'} Produto</ui:define>
 
 	<ui:define name="corpo">
 	
 		<f:metadata>
+			<f:viewParam name="produto" value="#{cadastroProdutoBean.produto}"></f:viewParam>
 			<f:event listener="#{cadastroProdutoBean.inicializar}" type="preRenderView"></f:event>
 		</f:metadata>
 	
 		<h:form>
-			<h1>Novo produto</h1>
+			<h1>#{cadastroProdutoBean.editando ? 'Edição de' : 'Novo'} produto</h1>
 		
 			<p:messages closable="true">
 				<p:autoUpdate />
