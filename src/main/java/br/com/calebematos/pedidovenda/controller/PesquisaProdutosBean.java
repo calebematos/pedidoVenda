@@ -10,6 +10,7 @@ import javax.inject.Named;
 import br.com.calebematos.pedidovenda.model.Produto;
 import br.com.calebematos.pedidovenda.repository.ProdutoRepository;
 import br.com.calebematos.pedidovenda.repository.filter.ProdutoFilter;
+import br.com.calebematos.pedidovenda.util.jsf.FacesUtil;
 
 @Named
 @ViewScoped
@@ -22,6 +23,7 @@ public class PesquisaProdutosBean implements Serializable {
 
 	private ProdutoFilter filtro;
 	private List<Produto> produtosFiltrados;
+	private Produto produtoSelecionado;
 
 	public PesquisaProdutosBean() {
 		filtro = new ProdutoFilter();
@@ -31,12 +33,26 @@ public class PesquisaProdutosBean implements Serializable {
 		produtosFiltrados = produtoRepository.filtrar(filtro);
 	}
 
+	public void excluir() {
+		produtoRepository.remover(produtoSelecionado);
+		produtosFiltrados.remove(produtoSelecionado);
+		FacesUtil.addInfoMessage("O produto " + produtoSelecionado.getSku() + " foi excluído com sucesso!");
+	}
+
 	public List<Produto> getProdutosFiltrados() {
 		return produtosFiltrados;
 	}
 
 	public ProdutoFilter getFiltro() {
 		return filtro;
+	}
+
+	public Produto getProdutoSelecionado() {
+		return produtoSelecionado;
+	}
+
+	public void setProdutoSelecionado(Produto produtoSelecionado) {
+		this.produtoSelecionado = produtoSelecionado;
 	}
 
 }
